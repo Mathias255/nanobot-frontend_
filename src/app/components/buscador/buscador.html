@@ -1,0 +1,25 @@
+<div class="buscador-card">
+  <h3 class="buscador-titulo">🔍 Buscador de Inventario</h3>
+  
+  <div class="buscador-form">
+    <select [(ngModel)]="tablaSeleccionada" class="form-select">
+      <option value="productos">Productos</option>
+      <option value="marcas">Marcas</option>
+    </select>
+    
+    <input type="number" [(ngModel)]="idBuscado" placeholder="Escribe el ID..." class="form-input">
+    
+    <button (click)="ejecutarBusqueda()" class="btn-buscar">
+      Buscar
+    </button>
+  </div>
+
+  <div *ngIf="resultado" class="resultado-box">
+    <h4 class="resultado-titulo">✓ Registro Encontrado:</h4>
+    <pre class="json-block"><code>{{ resultado | json }}</code></pre>
+  </div>
+
+  <div *ngIf="errorMensaje" class="error-box">
+    {{ errorMensaje }}
+  </div>
+</div>

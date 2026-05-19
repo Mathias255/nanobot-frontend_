@@ -1,0 +1,65 @@
+.buscador-card {
+  background-color: #ffffff;
+  font-family: sans-serif;
+}
+
+.buscador-titulo {
+  color: #0dcaf0;
+  margin-top: 0;
+}
+
+.buscador-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form-select, .form-input {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.btn-buscar {
+  background-color: #0dcaf0;
+  color: #212529;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-buscar:hover {
+  background-color: #0baccc;
+}
+
+.resultado-box {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 4px solid #198754;
+}
+
+.resultado-titulo {
+  margin-top: 0;
+  color: #198754;
+}
+
+.json-block {
+  margin: 0;
+  background: #212529;
+  color: #ffc107;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.error-box {
+  background-color: #f8d7da;
+  color: #842029;
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 4px solid #dc3545;
+}
