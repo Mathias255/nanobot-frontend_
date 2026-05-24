@@ -1,0 +1,80 @@
+.card-modulo {
+  background: #0d1224;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.custom-table {
+  background-color: #060913 !important;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.custom-table th {
+  background-color: #111827 !important;
+  color: #a0aec0 !important;
+  border-bottom: 2px solid #1e293b;
+  padding: 14px;
+}
+
+.custom-table td {
+  padding: 14px;
+  border-bottom: 1px solid #1e293b;
+  background-color: #060913 !important;
+}
+
+.img-tabla-preview {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #1e293b;
+}
+
+.text-cyan {
+  color: #0dcaf0 !important;
+}
+
+.btn-eliminar-item {
+  background: transparent;
+  border: 1px solid #ef4444;
+  color: #ef4444;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-eliminar-item:hover {
+  background: #ef4444;
+  color: white;
+}
+
+.carrito-resumen {
+  border-top: 1px solid #1e293b;
+}
+
+.btn-checkout {
+  background: #0dcaf0;
+  color: #060913;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-checkout:hover {
+  background: #0a9cb8;
+  box-shadow: 0 0 15px rgba(13, 202, 240, 0.4);
+  transform: translateY(-2px);
+}
+
+.vacio-icon {
+  font-size: 48px;
+}

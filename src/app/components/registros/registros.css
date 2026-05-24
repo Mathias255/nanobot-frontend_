@@ -1,0 +1,86 @@
+.card-modulo {
+  background: #0d1224;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.section-title {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.registro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group-custom {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.form-group-custom label {
+  color: #a0aec0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input-cyber {
+  background: #060913 !important;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #ffffff !important;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.input-cyber:focus {
+  outline: none;
+  border-color: #0dcaf0;
+  box-shadow: 0 0 8px rgba(13, 202, 240, 0.3);
+}
+
+.input-cyber::placeholder {
+  color: #4a5568;
+}
+
+.form-check-custom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  color: #a0aec0;
+  font-size: 13px;
+}
+
+.form-check-custom input[type="checkbox"] {
+  accent-color: #0dcaf0;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.btn-enviar-registro {
+  background: #0dcaf0;
+  color: #060913;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-enviar-registro:hover {
+  background: #0a9cb8;
+  box-shadow: 0 0 15px rgba(13, 202, 240, 0.5);
+  transform: translateY(-2px);
+}

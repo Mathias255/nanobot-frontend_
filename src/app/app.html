@@ -1,124 +1,67 @@
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="#" class="brand-text" (click)="$event.preventDefault(); cambiarSeccion('inicio')">
-      🤖 NANOBOT <span class="brand-accent">SYSTEMS</span>
-    </a>
-    
-    <div class="nav-actions">
-      <button class="btn-nav-action" [class.active]="seccionActiva === 'productos'" (click)="cambiarSeccion('productos')">
-        📦 Componentes
-      </button>
-
-      <button class="btn-nav-action" [class.active]="seccionActiva === 'registro'" (click)="cambiarSeccion('registro')">
-        👤 Registro de Usuario
-      </button>
-      
-      <button class="btn-nav-action" [class.active]="seccionActiva === 'carrito'" (click)="cambiarSeccion('carrito')" style="border-color: var(--nano-cyan); color: var(--nano-cyan);">
-        🛒 Carrito <span class="cart-badge">{{ carrito.length }}</span>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<header class="hero-section" *ngIf="seccionActiva === 'inicio'">
-  <h1 class="hero-title">Nanobot Systems</h1>
-  <p class="hero-eslogan">"Donde la innovación se conecta contigo."</p>
+<div class="app-container">
   
-  <p class="hero-description">
-    Especialistas en la distribución y gestión inteligente de hardware de alta gama. 
-    Potenciamos tu rendimiento ofreciendo componentes de vanguardia con la estética premium y 
-    la fiabilidad robótica que tu setup del mañana necesita.
-  </p>
-  
-  <button class="btn-cta" (click)="cambiarSeccion('productos')">
-    Ver Catálogo de Hardware →
-  </button>
-</header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-cyber-dark px-4 py-3 shadow" style="background-color: #0d1224 !important;">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#" (click)="$event.preventDefault(); seccionActiva = 'inicio'">
+        <img src="logo/logo.png" alt="Nanobot Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #0dcaf0;">
+        <span class="brand-text font-weight-bold" style="color: #ffffff; letter-spacing: 1px; font-size: 1.25rem;">
+          NANOBOT <span style="color: #0dcaf0;">SYSTEMS</span>
+        </span>
+      </a>
 
-<main class="main-container">
+      <div class="d-flex align-items-center gap-3">
+        <button class="btn btn-outline-light btn-sm px-3" (click)="seccionActiva = 'componentes'" style="border-radius: 20px; font-weight: 600;">
+          📦 Componentes
+        </button>
+        
+        <button class="btn btn-outline-light btn-sm px-3" (click)="seccionActiva = 'registro'" style="border-radius: 20px; font-weight: 600;">
+          👤 Registro de Usuario
+        </button>
+        
+        <button class="btn btn-info btn-sm px-3 text-dark font-weight-bold d-flex align-items-center gap-1" (click)="seccionActiva = 'carrito'" style="border-radius: 20px; background-color: #0dcaf0; border: none;">
+          🛒 Carrito <span class="badge bg-dark text-white ms-1" style="border-radius: 10px; padding: 4px 8px;">{{ carrito.length }}</span>
+        </button>
+      </div>
 
-  <div *ngIf="seccionActiva === 'productos'">
-    <section class="modulo-wrapper">
-      <app-buscador></app-buscador>
-    </section>
+    </div>
+  </nav>
 
-    <section class="modulo-wrapper">
-      <app-catalogo (productoAgregado)="capturarProducto($event)"></app-catalogo>
-    </section>
-  </div>
-
-  <div *ngIf="seccionActiva === 'registro'" class="modulo-wrapper mx-auto" style="max-width: 500px;">
-    <h3 class="mb-4 text-center" style="color: var(--nano-dark); font-weight: 700;">🤖 Registro de Ecosistema</h3>
-    <p class="text-muted text-center mb-4">Únete a la red Nanobot para gestionar tus pedidos y configuraciones.</p>
+  <main class="container my-5 text-center">
     
-    <form (submit)="$event.preventDefault(); cambiarSeccion('inicio')">
-      <div class="mb-3">
-        <label class="form-label font-weight-bold">Nombre Completo</label>
-        <input type="text" class="form-control" placeholder="Escribe tu nombre..." required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Correo Electrónico</label>
-        <input type="email" class="form-control" placeholder="usuario@nanobot.com" required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Contraseña de Acceso</label>
-        <input type="password" class="form-control" placeholder="••••••••" required>
-      </div>
-      <button type="submit" class="btn w-100 text-dark font-weight-bold" style="background-color: var(--nano-cyan);">
-        Crear Cuenta Nanobot
+    <div *ngIf="seccionActiva === 'inicio'" class="py-5">
+      <img src="logo/logo.png" alt="Nanobot Systems Logo" class="img-fluid mb-4" style="max-width: 180px; border-radius: 50%; border: 2px solid #0dcaf0; box-shadow: 0 0 15px rgba(13, 202, 240, 0.3);">
+      
+      <h1 class="display-4 font-weight-bold" style="color: #0f172a !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+        Nanobot Systems
+      </h1>
+      
+      <h3 style="color: #00b4d8; font-style: italic; font-weight: 500; margin-top: 10px;">
+        "Donde la innovación se conecta contigo."
+      </h3>
+      
+      <p class="mx-auto mt-3" style="max-width: 650px; font-size: 17px; color: #334155 !important; line-height: 1.6; font-weight: 500;">
+        Especialistas en la distribución y gestión inteligente de hardware de alta gama. Potenciamos tu 
+        rendimiento ofreciendo componentes de vanguardia con la estética premium y la fiabilidad 
+        robótica que tu setup del mañana necesita.
+      </p>
+      
+      <button class="btn btn-info mt-4 px-4 py-2 text-dark font-weight-bold" (click)="seccionActiva = 'componentes'" style="border-radius: 8px; background-color: #0dcaf0; border: none; box-shadow: 0 4px 10px rgba(13, 202, 240, 0.3);">
+        Ver Catálogo de Hardware →
       </button>
-    </form>
-  </div>
-
-  <div *ngIf="seccionActiva === 'carrito'" class="modulo-wrapper">
-    <h3 class="mb-4" style="color: var(--nano-dark); font-weight: 700;">🛒 Tu Carrito de Hardware</h3>
-    
-    <div class="py-5 text-center text-muted" *ngIf="carrito.length === 0">
-      <p style="font-size: 4rem; margin-off: 0;">🛒</p>
-      <h5>Tu lista de compras está vacía.</h5>
-      <p>Explora la sección de componentes para añadir piezas a tu configuración.</p>
-      <button class="btn btn-outline-info text-dark mt-2" (click)="cambiarSeccion('productos')">Ir a Componentes</button>
     </div>
-    
-    <div *ngIf="carrito.length > 0">
-      <div class="table-responsive">
-        <table class="table table-hover align-middle">
-          <thead class="table-dark">
-            <tr>
-              <th>Componente</th>
-              <th>Descripción</th>
-              <th class="text-end">Precio Base</th>
-              <th class="text-center">Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of carrito; let i = index">
-              <td class="font-weight-bold" style="color: var(--nano-dark);">{{ item.nombre }}</td>
-              <td class="text-muted small">{{ item.descripcion || 'Sin descripción adicional' }}</td>
-              <td class="text-end font-weight-bold text-success">${{ item.precio }}</td>
-              <td class="text-center">
-                <button class="btn btn-sm btn-outline-danger" (click)="eliminarDelCarrito(i)">Remover</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <div class="d-flex justify-content-between align-items-center mt-4 p-3 bg-light rounded border">
-        <div>
-          <span class="text-muted">Ítems seleccionados:</span> <strong>{{ carrito.length }}</strong>
-        </div>
-        <div class="text-end">
-          <span class="fs-5 me-2">Total Neto:</span>
-          <span class="fs-3 font-weight-bold text-success">${{ calcularTotal() }}</span>
-        </div>
-      </div>
-      
-      <div class="d-flex justify-content-end gap-3 mt-4">
-        <button class="btn btn-outline-secondary" (click)="cambiarSeccion('productos')">Seguir Comprando</button>
-        <button class="btn btn-dark px-4" (click)="vaciarCarrito()">Proceder al Pago Seguro</button>
-      </div>
-    </div>
-  </div>
 
-</main>
+    <div *ngIf="seccionActiva === 'componentes'">
+      <app-catalogo (productoAgregado)="agregarAlCarrito($event)"></app-catalogo>
+    </div>
+
+    <div *ngIf="seccionActiva === 'registro'">
+      <app-registro (registroExitoso)="seccionActiva = 'componentes'"></app-registro>
+    </div>
+
+    <div *ngIf="seccionActiva === 'carrito'">
+      <app-carrito [items]="carrito" (itemEliminado)="eliminarDelCarrito($event)"></app-carrito>
+    </div>
+
+  </main>
+</div>

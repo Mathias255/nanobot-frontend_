@@ -1,17 +1,25 @@
-<div>
-  <h3 class="catalogo-titulo">📦 Catálogo General</h3>
+<div class="catalogo-wrapper">
+  <h2 style="color: #0f172a !important; font-weight: 700; margin-bottom: 30px;">
+  📦 Catálogo General de Hardware
+</h2>
   
   <div class="grid-productos">
     
     <div *ngFor="let p of productos" class="producto-card d-flex flex-column justify-content-between">
       <div>
+        <div class="producto-img-container">
+          <img [src]="p.imagen_url ? 'productos/' + p.imagen_url : 'productos/placeholder-hardware.png'" 
+               [alt]="p.nombre" 
+               class="producto-img">
+        </div>
+
         <h4 class="producto-nombre">{{ p.nombre }}</h4>
-        <p class="producto-desc">{{ p.descripcion || 'Sin descripción' }}</p>
+        <p class="producto-desc">{{ p.descripcion || 'Sin descripción disponible para este componente.' }}</p>
       </div>
       
       <div class="d-flex justify-content-between align-items-center mt-3">
-        <span class="producto-precio">${{ p.precio }}</span>
-        <button class="btn btn-sm btn-outline-info text-dark font-weight-bold" (click)="agregarAlCarrito(p)">
+        <span class="producto-precio">${{ p.precio }} USD</span>
+        <button class="btn-agregar" (click)="agregarAlCarrito(p)">
           ＋ Agregar
         </button>
       </div>
@@ -19,7 +27,9 @@
 
   </div>
 
-  <div *ngIf="productos.length === 0" class="sin-productos">
-    No se encontraron productos en el catálogo o Flask está apagado.
+  <div *ngIf="productos.length === 0" class="sin-productos-card">
+    <div class="sin-productos-icono">🔌</div>
+    <h4>Conexión con el servidor no establecida</h4>
+    <p>No se encontraron productos en el catálogo o el backend de Flask se encuentra apagado.</p>
   </div>
 </div>

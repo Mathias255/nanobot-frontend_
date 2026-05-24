@@ -1,0 +1,49 @@
+<div class="card-modulo p-4">
+  <div class="carrito-header mb-4 text-center">
+    <h2 class="section-title text-white">🛒 Tu Carrito de Compras</h2>
+    <p class="section-subtitle text-muted">Revisa tus componentes antes de ensamblar tu orden en Nanobot.</p>
+  </div>
+
+  <div *ngIf="items.length === 0" class="carrito-vacio text-center py-5">
+    <div class="vacio-icon mb-3">📦</div>
+    <h4 class="text-white">Tu carrito está completamente vacío</h4>
+    <p class="text-muted">Explora el catálogo general y añade hardware de alta gama para empezar.</p>
+  </div>
+
+  <div *ngIf="items.length > 0">
+    <div class="table-responsive">
+      <table class="table table-dark table-hover align-middle custom-table">
+        <thead>
+          <tr>
+            <th>Componente</th>
+            <th>Nombre</th>
+            <th class="text-end">Precio</th>
+            <th class="text-center">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td>
+              <img [src]="'productos/' + item.imagen_url" alt="Hardware" class="img-tabla-preview">
+            </td>
+            <td class="text-white font-weight-bold">{{ item.nombre }}</td>
+            <td class="text-end text-cyan font-monospace">${{ item.precio }} USD</td>
+            <td class="text-center">
+              <button class="btn-eliminar-item" (click)="quitar(i)">✕ Quitar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="carrito-resumen d-flex justify-content-between align-items-center mt-4 pt-3">
+      <div class="total-box">
+        <span class="text-muted text-uppercase small block">Total Estimado</span>
+        <h3 class="text-cyan font-monospace m-0">${{ calcularTotal() }} USD</h3>
+      </div>
+      <button class="btn-checkout" (click)="procesarOrden()">
+        Proceder al Pago 🚀
+      </button>
+    </div>
+  </div>
+</div>
