@@ -1,35 +1,60 @@
-<div class="catalogo-wrapper">
-  <h2 style="color: #0f172a !important; font-weight: 700; margin-bottom: 30px;">
-  📦 Catálogo General de Hardware
-</h2>
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: sans-serif;">
   
-  <div class="grid-productos">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="color: #0f172a !important; font-size: 2rem; font-weight: 700; margin-bottom: 10px;">
+      📦 Catálogo General de Hardware
+    </h2>
+    <p style="color: #475569 !important; font-size: 1rem; margin: 0; font-weight: 500;">
+      Componentes de alta gama seleccionados con la máxima fiabilidad robótica para tu próximo ensamble.
+    </p>
+    <div style="width: 60px; height: 3px; background-color: #0dcaf0; margin: 15px auto 0; border-radius: 2px;"></div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
     
-    <div *ngFor="let p of productos" class="producto-card d-flex flex-column justify-content-between">
-      <div>
-        <div class="producto-img-container">
-          <img [src]="p.imagen_url ? 'productos/' + p.imagen_url : 'productos/placeholder-hardware.png'" 
-               [alt]="p.nombre" 
-               class="producto-img">
+    <div *ngFor="let producto of productos" 
+         style="flex: 1 1 250px; max-width: 280px; background-color: #0d1224; border: 1px solid #1e293b; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+      
+      <div style="background-color: #060913; padding: 20px; text-align: center; height: 150px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #1e293b;">
+        
+        <img *ngIf="producto.nombre.includes('RX 7800 XT') || producto.nombre.includes('Ryzen 7') || producto.nombre.includes('DeepCool') || producto.nombre.includes('B650-A') || producto.nombre.includes('RM1000e') || producto.nombre.includes('Trident Z5') || producto.nombre.includes('Kingston') || producto.nombre.includes('O11 Dynamic') || producto.nombre.includes('A850GL') || producto.nombre.includes('Z790-A') || producto.nombre.includes('Samsung') || producto.nombre.includes('Ryzen 5')"
+             [src]="'/productos/' + producto.nombre + '.jpg'" 
+             [alt]="producto.nombre" 
+             style="max-height: 110px; max-width: 100%; object-fit: contain;">
+
+        <img *ngIf="producto.nombre.includes('4060 Ti') || producto.nombre.includes('WD Black') || producto.nombre.includes('7900 XTX')"
+             [src]="'/productos/' + producto.nombre + '.png'" 
+             [alt]="producto.nombre" 
+             style="max-height: 110px; max-width: 100%; object-fit: contain;">
+
+        <img *ngIf="producto.nombre.includes('4070 Ti') || producto.nombre.includes('Intel') || producto.nombre.includes('Kraken') || producto.nombre.includes('Vengeance')"
+             [src]="'/productos/' + producto.nombre + '.webp'" 
+             [alt]="producto.nombre" 
+             style="max-height: 110px; max-width: 100%; object-fit: contain;">
+      </div>
+
+      <div style="padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+        <div style="margin-bottom: 15px;">
+          <h3 style="color: #ffffff !important; font-size: 0.95rem; font-weight: 600; text-align: center; margin: 0 0 8px 0; height: 38px; overflow: hidden; line-height: 1.3;">
+            {{ producto.nombre }}
+          </h3>
+          <p style="color: #94a3b8 !important; font-size: 0.75rem; text-align: center; margin: 0; height: 32px; overflow: hidden; line-height: 1.4;">
+            {{ producto.descripcion || 'Disponibilidad inmediata para ensamble.' }}
+          </p>
         </div>
 
-        <h4 class="producto-nombre">{{ p.nombre }}</h4>
-        <p class="producto-desc">{{ p.descripcion || 'Sin descripción disponible para este componente.' }}</p>
+        <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #1e293b; padding-top: 10px;">
+          <span style="color: #0dcaf0 !important; font-weight: 700; font-family: monospace; font-size: 1.15rem;">
+            ${{ producto.precio }}
+          </span>
+          <button (click)="agregar(producto)" 
+                  style="background-color: #0dcaf0; color: #060913; border: none; padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">
+            + Agregar
+          </button>
+        </div>
       </div>
-      
-      <div class="d-flex justify-content-between align-items-center mt-3">
-        <span class="producto-precio">${{ p.precio }} USD</span>
-        <button class="btn-agregar" (click)="agregarAlCarrito(p)">
-          ＋ Agregar
-        </button>
-      </div>
+
     </div>
-
   </div>
 
-  <div *ngIf="productos.length === 0" class="sin-productos-card">
-    <div class="sin-productos-icono">🔌</div>
-    <h4>Conexión con el servidor no establecida</h4>
-    <p>No se encontraron productos en el catálogo o el backend de Flask se encuentra apagado.</p>
-  </div>
 </div>

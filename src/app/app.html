@@ -1,54 +1,81 @@
-<div class="app-container">
+<div class="app-container" style="background-color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column;">
   
-  <nav class="navbar navbar-expand-lg navbar-dark bg-cyber-dark px-4 py-3 shadow" style="background-color: #0d1224 !important;">
+  <nav class="navbar navbar-expand-lg navbar-dark shadow" 
+       style="background-color: #0d1224 !important; position: sticky; top: 0; z-index: 1000; padding: 12px 24px; border-bottom: 1px solid #1e293b;">
     <div class="container-fluid d-flex justify-content-between align-items-center">
       
-      <a class="navbar-brand d-flex align-items-center gap-2" href="#" (click)="$event.preventDefault(); seccionActiva = 'inicio'">
-        <img src="logo/logo.png" alt="Nanobot Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #0dcaf0;">
-        <span class="brand-text font-weight-bold" style="color: #ffffff; letter-spacing: 1px; font-size: 1.25rem;">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#" (click)="$event.preventDefault(); seccionActiva = 'inicio'" style="text-decoration: none;">
+        <img src="logo/logo.png" alt="Nanobot Logo" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid #0dcaf0;">
+        <span class="brand-text" style="color: #ffffff; font-weight: 800; letter-spacing: 0.5px; font-size: 1.15rem;">
           NANOBOT <span style="color: #0dcaf0;">SYSTEMS</span>
         </span>
       </a>
 
-      <div class="d-flex align-items-center gap-3">
-        <button class="btn btn-outline-light btn-sm px-3" (click)="seccionActiva = 'componentes'" style="border-radius: 20px; font-weight: 600;">
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-outline-light btn-sm px-3" (click)="seccionActiva = 'componentes'" style="border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
           📦 Componentes
         </button>
         
-        <button class="btn btn-outline-light btn-sm px-3" (click)="seccionActiva = 'registro'" style="border-radius: 20px; font-weight: 600;">
+        <button class="btn btn-outline-light btn-sm px-3" (click)="seccionActiva = 'registro'" style="border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
           👤 Registro de Usuario
         </button>
         
-        <button class="btn btn-info btn-sm px-3 text-dark font-weight-bold d-flex align-items-center gap-1" (click)="seccionActiva = 'carrito'" style="border-radius: 20px; background-color: #0dcaf0; border: none;">
-          🛒 Carrito <span class="badge bg-dark text-white ms-1" style="border-radius: 10px; padding: 4px 8px;">{{ carrito.length }}</span>
+        <button class="btn btn-info btn-sm px-3 text-dark font-weight-bold d-flex align-items-center gap-1" (click)="seccionActiva = 'carrito'" 
+                style="border-radius: 20px; background-color: #0dcaf0; border: none; font-size: 0.85rem;">
+          🛒 Carrito <span class="badge bg-dark text-white ms-1" style="border-radius: 10px; padding: 3px 7px; font-size: 0.75rem;">{{ carrito.length }}</span>
         </button>
       </div>
 
     </div>
   </nav>
 
-  <main class="container my-5 text-center">
+  <main class="container my-4" style="flex: 1;">
     
-    <div *ngIf="seccionActiva === 'inicio'" class="py-5">
-      <img src="logo/logo.png" alt="Nanobot Systems Logo" class="img-fluid mb-4" style="max-width: 180px; border-radius: 50%; border: 2px solid #0dcaf0; box-shadow: 0 0 15px rgba(13, 202, 240, 0.3);">
+    <div *ngIf="seccionActiva === 'inicio'" style="font-family: sans-serif; animation: fadeIn 0.4s ease-in-out;">
       
-      <h1 class="display-4 font-weight-bold" style="color: #0f172a !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
-        Nanobot Systems
-      </h1>
-      
-      <h3 style="color: #00b4d8; font-style: italic; font-weight: 500; margin-top: 10px;">
-        "Donde la innovación se conecta contigo."
-      </h3>
-      
-      <p class="mx-auto mt-3" style="max-width: 650px; font-size: 17px; color: #334155 !important; line-height: 1.6; font-weight: 500;">
-        Especialistas en la distribución y gestión inteligente de hardware de alta gama. Potenciamos tu 
-        rendimiento ofreciendo componentes de vanguardia con la estética premium y la fiabilidad 
-        robótica que tu setup del mañana necesita.
-      </p>
-      
-      <button class="btn btn-info mt-4 px-4 py-2 text-dark font-weight-bold" (click)="seccionActiva = 'componentes'" style="border-radius: 8px; background-color: #0dcaf0; border: none; box-shadow: 0 4px 10px rgba(13, 202, 240, 0.3);">
-        Ver Catálogo de Hardware →
-      </button>
+      <div style="background-color: #0d1224; border: 1px solid #1e293b; border-radius: 16px; padding: 35px 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-align: center; margin-bottom: 30px; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -40px; left: 50%; transform: translateX(-50%); width: 250px; height: 250px; background: radial-gradient(circle, rgba(13,202,240,0.12) 0%, rgba(0,0,0,0) 70%); pointer-events: none;"></div>
+
+        <img src="logo/logo.png" alt="Nanobot Systems Logo" class="mb-3" style="max-width: 110px; border-radius: 50%; border: 2px solid #0dcaf0; box-shadow: 0 0 15px rgba(13, 202, 240, 0.3);">
+        <h1 style="font-size: 2.5rem; font-weight: 800; color: #ffffff; margin: 0; letter-spacing: 0.5px;">Nanobot Systems</h1>
+        <p style="color: #0dcaf0; font-size: 1rem; font-style: italic; font-weight: 500; margin-top: 5px; margin-bottom: 15px;">"Donde la innovación se conecta contigo."</p>
+        <p style="max-width: 750px; margin: 0 auto; font-size: 0.95rem; color: #94a3b8; line-height: 1.6;">
+          Especialistas en la distribución y gestión inteligente de hardware de alta gama. Potenciamos tu rendimiento ofreciendo componentes de vanguardia con la estética premium y la fiabilidad robótica que tu setup del mañana necesita.
+        </p>
+        <button class="btn" (click)="seccionActiva = 'componentes'" 
+                style="background-color: #0dcaf0; color: #060913; font-weight: 700; font-size: 0.9rem; padding: 10px 24px; border-radius: 8px; border: none; margin-top: 20px; cursor: pointer; box-shadow: 0 4px 12px rgba(13, 202, 240, 0.25);">
+          Explorar Componentes Disponibles →
+        </button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left;">
+        
+        <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-top: 3px solid #0dcaf0;">
+          <div style="font-size: 1.7rem; margin-bottom: 8px;">⚡</div>
+          <h4 style="color: #0f172a; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px;">Arquitectura Gráfica de Vanguardia</h4>
+          <p style="color: #475569; font-size: 0.85rem; margin: 0; line-height: 1.5;">
+            Accede a las últimas GPUs del ecosistema. Desde tarjetas aceleradoras AMD Radeon RX hasta series de trazado de rayos listas para renderizado complejo 4K y gaming competitivo de alto refresco.
+          </p>
+        </div>
+
+        <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-top: 3px solid #0f172a;">
+          <div style="font-size: 1.7rem; margin-bottom: 8px;">🦾</div>
+          <h4 style="color: #0f172a; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px;">Procesamiento Multihilo Intel / AMD</h4>
+          <p style="color: #475569; font-size: 0.85rem; margin: 0; line-height: 1.5;">
+            Procesadores de última generación configurados para cargas de trabajo críticas, streaming e inteligencia artificial distribuida. Overclock estable con placas base premium de chipset Z790.
+          </p>
+        </div>
+
+        <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-top: 3px solid #0dcaf0;">
+          <div style="font-size: 1.7rem; margin-bottom: 8px;">💾</div>
+          <h4 style="color: #0f172a; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px;">Memorias Ultra Rápidas DDR5</h4>
+          <p style="color: #475569; font-size: 0.85rem; margin: 0; line-height: 1.5;">
+            Módulos de alto rendimiento con perfiles XMP habilitados para latencias mínimas. Disipadores térmicos integrados e iluminación RGB direccionable sincronizable con el chasis.
+          </p>
+        </div>
+
+      </div>
+
     </div>
 
     <div *ngIf="seccionActiva === 'componentes'">
@@ -56,11 +83,16 @@
     </div>
 
     <div *ngIf="seccionActiva === 'registro'">
-      <app-registro (registroExitoso)="seccionActiva = 'componentes'"></app-registro>
+      <app-registro (usuarioRegistrado)="guardarDatosCliente($event)"></app-registro>
     </div>
 
     <div *ngIf="seccionActiva === 'carrito'">
-      <app-carrito [items]="carrito" (itemEliminado)="eliminarDelCarrito($event)"></app-carrito>
+      <app-carrito 
+        [items]="carrito" 
+        [cliente]="clienteActual"
+        (itemEliminado)="eliminarDelCarrito($event)"
+        (compraFinalizada)="terminarProcesoDeCompra()">
+      </app-carrito>
     </div>
 
   </main>

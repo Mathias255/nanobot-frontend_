@@ -1,49 +1,88 @@
-<div class="card-modulo p-4">
-  <div class="carrito-header mb-4 text-center">
-    <h2 class="section-title text-white">🛒 Tu Carrito de Compras</h2>
-    <p class="section-subtitle text-muted">Revisa tus componentes antes de ensamblar tu orden en Nanobot.</p>
-  </div>
+<div style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: sans-serif;">
 
-  <div *ngIf="items.length === 0" class="carrito-vacio text-center py-5">
-    <div class="vacio-icon mb-3">📦</div>
-    <h4 class="text-white">Tu carrito está completamente vacío</h4>
-    <p class="text-muted">Explora el catálogo general y añade hardware de alta gama para empezar.</p>
-  </div>
+  <div style="background-color: #0d1224; border: 1px solid #1e293b; border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); color: #ffffff;">
+    
+    <div style="text-align: center; margin-bottom: 25px;">
+      <h2 style="font-size: 1.8rem; font-weight: 700; color: #ffffff; margin-bottom: 5px;">
+        🛒 Tu Carrito de Compras
+      </h2>
+      <p style="color: #64748b; font-size: 0.9rem; margin: 0;">
+        Revisa tus componentes antes de ensamblar tu orden en Nanobot.
+      </p>
+    </div>
 
-  <div *ngIf="items.length > 0">
-    <div class="table-responsive">
-      <table class="table table-dark table-hover align-middle custom-table">
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left;">
         <thead>
-          <tr>
-            <th>Componente</th>
-            <th>Nombre</th>
-            <th class="text-end">Precio</th>
-            <th class="text-center">Acción</th>
+          <tr style="border-bottom: 2px solid #1e293b; color: #94a3b8; font-size: 0.9rem;">
+            <th style="padding: 12px; text-align: center;">Componente</th>
+            <th style="padding: 12px;">Nombre</th>
+            <th style="padding: 12px; text-align: right;">Precio</th>
+            <th style="padding: 12px; text-align: center;">Acción</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of items; let i = index">
-            <td>
-              <img [src]="'productos/' + item.imagen_url" alt="Hardware" class="img-tabla-preview">
+          <tr *ngFor="let item of items" style="border-bottom: 1px solid #1e293b; font-size: 0.95rem; vertical-align: middle;">
+            
+            <td style="padding: 12px; text-align: center; width: 100px;">
+              <div style="background-color: #060913; border: 1px solid #1e293b; border-radius: 6px; width: 70px; height: 55px; display: flex; align-items: center; justify-content: center; margin: 0 auto; padding: 4px;">
+                
+                <img *ngIf="item.nombre.includes('RX 7800 XT') || item.nombre.includes('Ryzen 7') || item.nombre.includes('DeepCool') || item.nombre.includes('B650-A') || item.nombre.includes('RM1000e') || item.nombre.includes('Trident Z5') || item.nombre.includes('Kingston') || item.nombre.includes('O11 Dynamic') || item.nombre.includes('A850GL') || item.nombre.includes('Z790-A') || item.nombre.includes('Samsung') || item.nombre.includes('Ryzen 5')"
+                     [src]="'/productos/' + item.nombre + '.jpg'" 
+                     [alt]="item.nombre" 
+                     style="max-width: 100%; max-height: 100%; object-fit: contain;">
+
+                <img *ngIf="item.nombre.includes('4060 Ti') || item.nombre.includes('WD Black') || item.nombre.includes('7900 XTX')"
+                     [src]="'/productos/' + item.nombre + '.png'" 
+                     [alt]="item.nombre" 
+                     style="max-width: 100%; max-height: 100%; object-fit: contain;">
+
+                <img *ngIf="item.nombre.includes('4070 Ti') || item.nombre.includes('Intel') || item.nombre.includes('Kraken') || item.nombre.includes('Vengeance')"
+                     [src]="'/productos/' + item.nombre + '.webp'" 
+                     [alt]="item.nombre" 
+                     style="max-width: 100%; max-height: 100%; object-fit: contain;">
+              </div>
             </td>
-            <td class="text-white font-weight-bold">{{ item.nombre }}</td>
-            <td class="text-end text-cyan font-monospace">${{ item.precio }} USD</td>
-            <td class="text-center">
-              <button class="btn-eliminar-item" (click)="quitar(i)">✕ Quitar</button>
+
+            <td style="padding: 12px; color: #ffffff; font-weight: 500;">
+              {{ item.nombre }}
+            </td>
+
+            <td style="padding: 12px; text-align: right; color: #0dcaf0; font-weight: 700; font-family: monospace;">
+              ${{ item.precio }} <span style="font-size: 0.75rem; color: #64748b; font-weight: 400;">USD</span>
+            </td>
+
+            <td style="padding: 12px; text-align: center;">
+              <button (click)="itemEliminado.emit(item)" 
+                      style="background: transparent; color: #ef4444; border: 1px solid #ef4444; border-radius: 6px; padding: 4px 10px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;">
+                ✕ Quitar
+              </button>
+            </td>
+
+          </tr>
+
+          <tr *ngIf="items.length === 0">
+            <td colspan="4" style="padding: 30px; text-align: center; color: #64748b;">
+              No hay componentes en tu carrito. ¡Visita el catálogo!
             </td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="carrito-resumen d-flex justify-content-between align-items-center mt-4 pt-3">
-      <div class="total-box">
-        <span class="text-muted text-uppercase small block">Total Estimado</span>
-        <h3 class="text-cyan font-monospace m-0">${{ calcularTotal() }} USD</h3>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding-top: 20px; border-top: 2px solid #1e293b;">
+      <div>
+        <div style="color: #64748b; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px;">Total Estimado</div>
+        <div style="color: #0dcaf0; font-size: 1.8rem; font-weight: 700; font-family: monospace;">
+          ${{ calcularTotal() }} <span style="font-size: 1rem; color: #ffffff; font-weight: 500;">USD</span>
+        </div>
       </div>
-      <button class="btn-checkout" (click)="procesarOrden()">
+      
+      <button (click)="generarFacturaPDF()"
+              style="background-color: #0dcaf0; color: #060913; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: transform 0.2s;">
         Proceder al Pago 🚀
       </button>
     </div>
+
   </div>
 </div>
